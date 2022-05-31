@@ -32,8 +32,8 @@ def checktiredness(player, difficulty):
 
 def exploreroom(player, difficulty): ###GENERATE RANDOM ROOM (ENNEMY/SUPPLY/EMPTY)
     checktiredness(player, difficulty)
-    #e = spawn_enemy()
-    #fight(player,e)
+    e = spawn_enemy()
+    fight(player,e)
     time.sleep(1)
     if player.isdead()==False:
         print("There's nothing else in this room, we should get going.")

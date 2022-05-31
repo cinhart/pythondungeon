@@ -26,8 +26,9 @@ class entity:
     def attack(self, entity):
         print(self.name+" attack "+entity.name)
         damage = self.strength
-        print(entity.name+" just lost "+str(damage)+" hp")
-        entity.hp -= damage
+        if binomialrand(0.9 - self.agility/50):
+            print(entity.name+" just lost "+str(damage)+" hp")
+            entity.hp -= damage
 
 
 
