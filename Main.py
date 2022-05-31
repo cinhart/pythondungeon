@@ -1,7 +1,6 @@
 from Entities import *
 from FightingSystem import*
 
-import random
 import numpy
 import time
 
