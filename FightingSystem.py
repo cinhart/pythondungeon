@@ -30,20 +30,23 @@ def enemyturn(player, entity):
 def fight(player, entity):
     turncount=1
     while(True):
+        #turn initialisation
         print("\n\n----------\nTurn: "+str(turncount)+"\n----------")
         time.sleep(1)
         player.showhp()
         entity.showhp()
         print("----------")
         time.sleep(1)
+        #player turn
         playerturn(player, entity)
-        if not(entity.isdead()==False):
+        if not(entity.isdead()==False): #death check
             print("\n"+entity.name+" is dead! GG!")
             del entity
             return "Win"
         time.sleep(1)
+        #enemy turn
         entity.attack(player)
-        if not(player.isdead()==False):
+        if not(player.isdead()==False): #death check
             print("\nOh no, you're dead! Better luck next time")
             return "Loss"
         time.sleep(1)

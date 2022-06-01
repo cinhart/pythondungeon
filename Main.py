@@ -5,7 +5,7 @@ import numpy
 import time
 
 def launchGame():
-    g = game()
+    g = game() #initialise the game
     while(g.player.isdead()==False):
         g.roomcount+=1
         print("\n----------\nROOM "+str(g.roomcount)+"\n----------")

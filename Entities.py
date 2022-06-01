@@ -27,7 +27,7 @@ class entity:
         print(self.name+" attack "+entity.name)
         r = kuramaswamyrand(entity.A,entity.B)
         damage=self.strength
-        damage = round(bornedcauchyrand(damage))
+        damage = round(bornedcauchyrand(damage, 0.5)) #cauchy variation
         if (r + self.focusing/100 > 1.3): #critical attack
             damage = int(damage * r *2)
             print("Critical hit !")
@@ -46,7 +46,7 @@ class player(entity):
     def __init__(self, name):
         super().__init__()
         self.name = name
-        self.hp = math.floor(triangrand(80,150,100))
+        self.hp = math.floor(triangrand(80,150,100)) #random stats
         self.maxhp = self.hp
         self.strength = math.floor(triangrand(8,15,10))
         self.agility = math.floor(triangrand(8,15,10))

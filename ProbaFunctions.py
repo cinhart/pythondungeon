@@ -34,7 +34,8 @@ def uniformrand(n):
     return math.floor(r*n)+1
 
 
-## TRIANG. DISTRIB. BETWEEN A AND B (EXTREMUM =C)
+## TRIANG. DISTRIB.
+# Return a value between a and b, more chances to be close to c
 
 def triangrand(a,b,c):
     c= (c-a)/(b-a)
@@ -48,8 +49,8 @@ def triangrand(a,b,c):
         r=r*(a-b)+b
     return(r)
 
-## KURAMASWAMY DISTRIB WITH A AND B PARAMETER
-#Return a value between 0 and 1
+## KURAMASWAMY DISTRIB.
+#Return a value between 0 and 1, probabilities depens on A and B
 
 def kuramaswamyrand(A,B):
     r = random.random()
@@ -71,7 +72,7 @@ def bornedcauchyrand(A,l=1):
         r = cauchyrand(A,l)
     return r+A
 
-## POISSON DISTRIB
+## POISSON DISTRIB - UNUSED
 
 #def poissonrand(A, k):
 #   r = random.random()

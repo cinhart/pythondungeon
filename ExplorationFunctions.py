@@ -36,9 +36,9 @@ def checktiredness(player, difficulty):
     if(r==1):
         changetiredness(player)
 
-def exploreroom(game): ###GENERATE RANDOM ROOM (ENNEMY/SUPPLY/EMPTY)
-    checktiredness(game.player, game.difficulty)
-    event = nonuniformrand3(0.2-0.05*game.difficulty,0.7+0.05*game.difficulty)
+def exploreroom(game):
+    checktiredness(game.player, game.difficulty) #triger tiredness event
+    event = nonuniformrand3(0.2-0.05*game.difficulty,0.7+0.05*game.difficulty) #define the object in the room
     if event==1:
         print("You find a health potion!")
         game.potioncount+=1
