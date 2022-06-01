@@ -67,7 +67,7 @@ class player(entity):
             print(entity.name+" just lost "+str(damage)+" hp")
             entity.hp -= damage
         else:
-            print("It failed...")
+            print(self.name+"tried a special move but It failed...")
     def run(self, entity):
         print("You can't run, where are you supposed to go?")
 
