@@ -11,6 +11,8 @@ class entity:
         self.strength = 0
         self.agility = 0
         self.focusing = 0
+        self.A=0
+        self.B=0
     def showstats(self):
         print("\n----------\n"+self.name+"'s stats\n----------")
         print("hp: "+str(self.hp)+"/"+str(self.maxhp))
@@ -25,10 +27,18 @@ class entity:
         return False
     def attack(self, entity):
         print(self.name+" attack "+entity.name)
-        damage = self.strength
-        if binomialrand(0.9 - self.agility/50):
+        r = kuramaswamyrand(entity.A,entity.B)
+        damage=self.strength
+        damage = round(bornedcauchyrand(damage))
+        if (r + self.focusing/100 > 1.3): #critical attack
+            print(r + self.focusing/100)
+            damage = int(damage * r *2)
+            print("Critical hit !")
+        if bernouillirand(0.9 - self.agility/50): #dodge
             print(entity.name+" just lost "+str(damage)+" hp")
             entity.hp -= damage
+        else:
+            print ("Dodged !")
 
 
 
@@ -36,7 +46,8 @@ class entity:
 
 class player(entity):
     pass
-    def __init__(self, name): ###GENERATE RANDOM STATS
+    def __init__(self, name):
+        super().__init__()
         self.name = name
         self.hp = math.floor(triangrand(80,150,100))
         self.maxhp = self.hp
@@ -50,12 +61,15 @@ class player(entity):
         super().showstats()
         print("level: "+str(self.level)+" ("+str(self.xp)+" xp)")
     def speattack(self, entity):
-        print(self.name+" use a special attack on "+entity.name)
-        damage = self.strength*2
-        print(entity.name+" just lost "+str(damage)+" hp")
-        entity.hp -= damage
+        if (bernouillirand(0.5 + self.focusing/50)):
+            print(self.name+" use a special attack on "+entity.name)
+            damage = int(self.strength*2)
+            print(entity.name+" just lost "+str(damage)+" hp")
+            entity.hp -= damage
+        else:
+            print("It failed...")
     def run(self, entity):
-        print(entity.name+" did not let you run")
+        print("You can't run, where are you supposed to go?")
 
 
 def init_player():
@@ -73,6 +87,7 @@ def init_player():
 class enemy1(entity):
     pass
     def __init__(self):
+        super().__init__()
         self.name = "Serpython"
         self.hp = math.floor(triangrand(20,60,50))
         self.maxhp = self.hp
@@ -83,6 +98,7 @@ class enemy1(entity):
 class enemy2(entity):
     pass
     def __init__(self):
+        super().__init__()
         self.name = "Turboa"
         self.hp = math.floor(triangrand(15,25,20))
         self.maxhp = self.hp
@@ -93,6 +109,7 @@ class enemy2(entity):
 class enemy3(entity):
     pass
     def __init__(self):
+        super().__init__()
         self.name = "Abradacobra"
         self.hp = math.floor(triangrand(15,25,20))
         self.maxhp = self.hp
@@ -100,7 +117,7 @@ class enemy3(entity):
         self.agility = math.floor(triangrand(5,20,10))
         self.focusing = math.floor(triangrand(30,60,40))
 
-def spawn_enemy():
+def spawn_enemy(): #Spawn a random enemy (uniform)
     r=uniformrand(3)
     if r==1:
         e = enemy1()

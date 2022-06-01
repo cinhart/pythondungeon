@@ -7,36 +7,47 @@ import time
 def changetiredness(player):
     if(player.tired==False):
         print("You feel tired all of a sudden...")
+        player.strength*=0.9
+        player.agility*=0.9
+        player.focusing*=0.9
         player.tired=True
     elif(player.tired==True):
         print("You don't feel tired anymore!")
+        player.strength*=1.1
+        player.agility*=1.1
+        player.focusing*=1.1
         player.tired=False
 
 def checktiredness(player, difficulty):
     if player.tired==False:
         if difficulty==1: #easy
-            r = binomialrand(0.05)
+            r = bernouillirand(0.05)
         elif difficulty==2: #normal
-            r = binomialrand(0.1)
+            r = bernouillirand(0.1)
         elif difficulty==3: #hard
-            r = binomialrand(0.3)
+            r = bernouillirand(0.3)
     elif player.tired==True:
         if difficulty==1: #easy
-            r = binomialrand(0.8)
+            r = bernouillirand(0.8)
         elif difficulty==2: #normal
-            r = binomialrand(0.5)
+            r = bernouillirand(0.5)
         elif difficulty==3: #hard
-            r = binomialrand(0.5)
+            r = bernouillirand(0.5)
     if(r==1):
         changetiredness(player)
 
 def exploreroom(player, difficulty): ###GENERATE RANDOM ROOM (ENNEMY/SUPPLY/EMPTY)
     checktiredness(player, difficulty)
-    e = spawn_enemy()
-    fight(player,e)
+    event = nonuniformrand3(0.2-0.05*difficulty,0.7+0.05*difficulty)
+    if event==1:
+        print("You find a health potion!")
+        player.hp+= int(0.25*player.maxhp)
+    elif event==2:
+        e = spawn_enemy()
+        fight(player,e)
     time.sleep(1)
     if player.isdead()==False:
-        print("There's nothing else in this room, we should get going.")
+        print("There's nothing left to see in this room, we should get going.")
         input("\npress Enter to continue...")
 
 def choosedifficulty():
