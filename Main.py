@@ -10,7 +10,7 @@ def launchGame():
         g.roomcount+=1
         print("\n----------\nROOM "+str(g.roomcount)+"\n----------")
         exploreroom(g)
-    g.showstats()1
+    g.showstats()
 
 launchGame()
 

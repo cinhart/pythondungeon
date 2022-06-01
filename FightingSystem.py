@@ -1,9 +1,11 @@
+from Entities import*
+
 import time
 
 ## TURNS SYSTEM
 
 def playerturn(player, entity):
-    print("What do you want to do ?\n1) Attack\n2) Spe Attack\n3) Run")
+    print("What do you want to do ?\n1) Attack\n2) Spe Attack\n3) Randomise Critical Probabilities\n4) Run")
     while(True):
         i=input("")
         if i=="1":
@@ -11,6 +13,11 @@ def playerturn(player, entity):
         elif i=="2":
             return player.speattack(entity)
         elif i=="3":
+            player.A=uniformrand(10)
+            player.B=uniformrand(10)
+            print("Something just changed, you can feel it")
+            return 0
+        elif i=="4":
             return player.run(entity)
         else:
             print("Please choose a valid option")

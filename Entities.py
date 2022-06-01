@@ -1,7 +1,5 @@
 from ProbaFunctions import*
 
-import time
-
 ## GENERAL ENTITY CLASS
 
 class entity:
@@ -11,8 +9,8 @@ class entity:
         self.strength = 0
         self.agility = 0
         self.focusing = 0
-        self.A=0
-        self.B=0
+        self.A=2
+        self.B=10
     def showstats(self):
         print("\n----------\n"+self.name+"'s stats\n----------")
         print("hp: "+str(self.hp)+"/"+str(self.maxhp))
@@ -31,7 +29,6 @@ class entity:
         damage=self.strength
         damage = round(bornedcauchyrand(damage))
         if (r + self.focusing/100 > 1.3): #critical attack
-            print(r + self.focusing/100)
             damage = int(damage * r *2)
             print("Critical hit !")
         if bernouillirand(0.9 - self.agility/50): #dodge
@@ -67,7 +64,7 @@ class player(entity):
             print(entity.name+" just lost "+str(damage)+" hp")
             entity.hp -= damage
         else:
-            print(self.name+"tried a special move but It failed...")
+            print(self.name+"tried a special move but it failed...")
     def run(self, entity):
         print("You can't run, where are you supposed to go?")
 
@@ -126,7 +123,6 @@ def spawn_enemy(): #Spawn a random enemy (uniform)
     elif r==3:
         e = enemy3()
     print("\nA wild "+e.name+" appeared!")
-    time.sleep(1)
     print("Let's fight it!")
     input("\npress Enter to continue...")
     return e
