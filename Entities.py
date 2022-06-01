@@ -38,11 +38,11 @@ class player(entity):
     pass
     def __init__(self, name): ###GENERATE RANDOM STATS
         self.name = name
-        self.hp = 100
+        self.hp = math.floor(triangrand(80,150,100))
         self.maxhp = self.hp
-        self.strength = 10
-        self.agility = 10
-        self.focusing = 5
+        self.strength = math.floor(triangrand(8,15,10))
+        self.agility = math.floor(triangrand(8,15,10))
+        self.focusing = math.floor(triangrand(8,15,10))
         self.level = 1
         self.xp = 0
         self.tired = False
@@ -74,31 +74,31 @@ class enemy1(entity):
     pass
     def __init__(self):
         self.name = "Serpython"
-        self.hp = 50
+        self.hp = math.floor(triangrand(20,60,50))
         self.maxhp = self.hp
-        self.strength = 5
-        self.agility = 10
-        self.focusing = 10
+        self.strength = math.floor(triangrand(5,15,8))
+        self.agility = math.floor(triangrand(5,20,10))
+        self.focusing = math.floor(triangrand(8,15,10))
 
 class enemy2(entity):
     pass
     def __init__(self):
         self.name = "Turboa"
-        self.hp = 20
+        self.hp = math.floor(triangrand(15,25,20))
         self.maxhp = self.hp
-        self.strength = 10
-        self.agility = 50
-        self.focusing = 25
+        self.strength = math.floor(triangrand(5,12,10))
+        self.agility = math.floor(triangrand(40,70,50))
+        self.focusing = math.floor(triangrand(20,50,25))
 
 class enemy3(entity):
     pass
     def __init__(self):
         self.name = "Abradacobra"
-        self.hp = 100
+        self.hp = math.floor(triangrand(15,25,20))
         self.maxhp = self.hp
-        self.strength = 20
-        self.agility = 10
-        self.focusing = 50
+        self.strength = math.floor(triangrand(15,25,20))
+        self.agility = math.floor(triangrand(5,20,10))
+        self.focusing = math.floor(triangrand(30,60,40))
 
 def spawn_enemy():
     r=uniformrand(3)

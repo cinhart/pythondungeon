@@ -2,7 +2,7 @@ import math
 import random # function used: random.random() -> return float between 0 and 1
 
 
-## BINOMIAL DISTRIB (p=n)
+## BINOMIAL DISTRIB. (p=n)
 # Return 0 or 1
 
 def bernouillirand(n):
@@ -13,12 +13,32 @@ def bernouillirand(n):
         r=0
     return r
 
-## UNIFORM DISTRIB FOR N VALUES (DISCRETE)
+## UNIFORM DISTRIB. FOR N VALUES (DISCRETE)
 # Return a value between 1 and N
 
 def uniformrand(n):
     r = random.random()
     return math.floor(r*n)+1
+
+# Return a value between a and b
+
+def uniformrand(a,b):
+    r = random.random()
+    return math.floor(r*n)+1
+
+## TRIANG. DISTRIB. BETWEEN A AND B (EXTREMUM =C)
+
+def triangrand(a,b,c):
+    c= (c-a)/(b-a)
+    r = random.random()
+
+    if(r<=c):
+        r=math.sqrt(r*c)
+        r=r*(b-a)+a
+    elif(r>c):
+        r=math.sqrt((1-r)*(1-c))
+        r=r*(a-b)+b
+    return(r)
 
 
 ## STANDARD CAUCHY DISTRIB FROM 0 TO 2A -> MIDDLE = A (CONTINUOUS)
