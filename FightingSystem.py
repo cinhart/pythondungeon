@@ -5,7 +5,7 @@ import time
 ## TURNS SYSTEM
 
 def playerturn(player, entity):
-    print("What do you want to do ?\n1) Attack\n2) Spe Attack\n3) Randomise Critical Probabilities\n4) Run")
+    print("What do you want to do ?\n1) Attack\n2) Spe Attack\n3) Try to focus\n4) Run")
     while(True):
         i=input("")
         if i=="1":
